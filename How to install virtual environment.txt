@@ -1,0 +1,43 @@
+1. Run WSL from PowerShell or Command Prompt.
+WSL
+
+2. Create the virtual environment if it is not exist
+python3 -m venv .env
+
+3. Active the virtual environment
+source .env/bin/activate
+
+
+4. Install requirements.
+Because the libraries can run significantly faster on CUDA, we will prioritize using CUDA whenever possible. 
+However, in reality, many graphics cards are outdated and cannot run the latest versions of these libraries, 
+which leads to errors. 
+Therefore, we need to choose a library version that is compatible with the CUDA version currently installed. 
+So, please determine your exact CUDA version and select the appropriate options below.
+
+
+===>>>>>> For CPU only
+pip install colorama
+pip install scikit-learn
+pip install sentence_transformers
+pip install faiss-cpu
+pip install joblib
+pip install uvicorn
+pip install fastapi
+
+
+===>>>>>> For Nvidia GTX1050Ti
+pip install torch==2.4.1+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
+pip install torchvision==0.19.1+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
+pip install torchaudio==2.4.1+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
+pip install colorama
+pip install scikit-learn
+pip install sentence_transformers
+pip install faiss-cpu
+pip install joblib
+pip install uvicorn
+pip install fastapi
+
+
+5. Verify installeds
+python -m torch.utils.collect_env without warning
